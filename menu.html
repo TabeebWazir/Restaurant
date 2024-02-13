@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+        }
+  
+        section {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          margin: 20px;
+          padding: 15px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+  
+        h2 {
+          color: #333;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+  
+        .food-item {
+          flex: 0 0 48%; /* Two items side by side */
+          margin-bottom: 20px;
+          padding: 10px;
+          background-color: #f9f9f9;
+          border-radius: 5px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+  
+        .food-title {
+          font-size: 18px;
+          font-weight: bold;
+          color: #555;
+          margin-bottom: 8px;
+        }
+  
+        .price {
+          color: #007bff;
+        }
+  
+        .description {
+          color: #777;
+        }
+
+
+        @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+.description,
+.price,
+.food-title,
+.section,
+.food-item,  h2  {
+  animation: scaleIn 1s ease-in-out;
+}
+ /* {
+  animation: slideInFromTop 1s ease-in-out;
+}
+
+.description,
+.price,
+.food-title {
+  animation: scaleIn 1s ease-in-out;
+} */
+
+      </style>
+</head>
+<body>
+    <header>
+        <nav>
+                <h1>SHAWARMA RESTAURANT</h1>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a></li>
+                <a href="location.html">Location</a>
+                <a href="about.html">About</a>  
+        </nav>
+    </header>
+    <main>
+
+        <section class="menusection">
+            <h2>Appetizers</h2>
+            <div></div>
+            <div class="food-item">
+              <div class="food-title">Garlic Bread</div>
+              <div class="price">$5.99</div>
+              <div class="description">Toasted bread with garlic and herbs.</div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Bruschetta</div>
+              <div class="price">$7.99</div>
+              <div class="description">
+                Toasted bread with tomatoes, basil, and olive oil.
+              </div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Garlic Bread</div>
+              <div class="price">$5.99</div>
+              <div class="description">Toasted bread with garlic and herbs.</div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Bruschetta</div>
+              <div class="price">$7.99</div>
+              <div class="description">
+                Toasted bread with tomatoes, basil, and olive oil.
+              </div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Garlic Bread</div>
+              <div class="price">$5.99</div>
+              <div class="description">Toasted bread with garlic and herbs.</div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Bruschetta</div>
+              <div class="price">$7.99</div>
+              <div class="description">
+                Toasted bread with tomatoes, basil, and olive oil.
+              </div>
+            </div>
+      
+            <!-- Add more items as needed -->
+          </section>
+      
+          <section>
+            <h2>Main Courses</h2>
+            <div class="food-item">
+              <div class="food-title">Spaghetti Bolognese</div>
+              <div class="price">$12.99</div>
+              <div class="description">Classic Italian pasta with meat sauce.</div>
+            </div>
+      
+            <div class="food-item">
+              <div class="food-title">Chicken Alfredo</div>
+              <div class="price">$15.99</div>
+              <div class="description">
+                Creamy Alfredo sauce with grilled chicken.
+              </div>
+            </div>
+      
+            <!-- Add more items as needed -->
+          </section>
+
+
+    </main>
+    <footer>
+      <div class="footer-content">
+          <div class="restaurant-info">
+              <h3>Shawarma Restaurant</h3>
+              <p>3670 Mt Read Blvd, Rochester, NY 14616</p>
+              <p>Phone: (585) 270-4772</p>
+      
+          </div>
+          <div class="social-icons">
+              <a href="https://www.doordash.com/store/shawarma-restaurant-rochester-26219940/"><img class="doordash" src="./images/R.png"></a>
+              <a href="https://www.grubhub.com/restaurant/shawarma-restaurant-3670-mt-read-blvd-rochester/7134016"><img class="doordash" src="./images/grubhub.png"></a>
+              <a href="https://www.yelp.com/biz/shawarma-restaurant-no-title"><img class="doordash" src="./images/y.png"></a>
+          </div>
+      </div>
+  </footer>
+
+  <script scr="menu.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+

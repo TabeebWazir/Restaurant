@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .restaurant-hours {
+          padding: 20px;
+          border: 1px solid #ccc;
+          display: inline-block;
+        }
+  
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+  
+        li {
+          margin: 10px 0;
+        }
+  
+        strong {
+          margin-right: 10px;
+        }
+  
+        #statusMessage {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+  
+        #statusMessage.open {
+          color: green;
+        }
+  
+        #statusMessage.closed {
+          color: red;
+        }
+  
+        /* Add this styling for open hours */
+        .open-hour {
+          color: green;
+          font-weight: bold;
+        }
+
+
+
+        
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+.google-map .restaurant-hours  {
+  animation: scaleIn 1s ease-in-out;
+}
+
+
+        
+      </style>
+</head>
+<body>
+    <header>
+        <nav>
+                <h1>SHAWARMA RESTAURANT</h1>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a></li>
+                <a href="location.html">Location</a>
+                <a href="about.html">About</a>  
+        </nav>
+    </header>
+    <main>
+        
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              updateRestaurantStatus();
+              setInterval(updateRestaurantStatus, 1000 * 60); // Update every minute
+            });
+      
+            function updateRestaurantStatus() {
+              const now = new Date();
+              const dayOfWeek = now.getDay();
+              const currentHour = now.getHours();
+              const isOpen = checkIfOpen(dayOfWeek, currentHour);
+      
+              const statusMessage = document.getElementById("statusMessage");
+              const restaurantHours = document.getElementById("restaurantHours");
+      
+              if (isOpen) {
+                statusMessage.textContent = "Open Now";
+                statusMessage.classList.add("open");
+                statusMessage.classList.remove("closed");
+              } else {
+                statusMessage.textContent = "Closed Now";
+                statusMessage.classList.add("closed");
+                statusMessage.classList.remove("open");
+              }
+      
+              // Highlight open hours dynamically
+              const hoursList = document.getElementById("hoursList");
+              const currentDay = document.getElementById(getDayId(dayOfWeek));
+              const allDays = hoursList.getElementsByTagName("li");
+      
+              Array.from(allDays).forEach((day) => {
+                day.classList.remove("open-hour");
+              });
+      
+              if (isOpen) {
+                currentDay.classList.add("open-hour");
+              }
+            }
+      
+            function checkIfOpen(dayOfWeek, currentHour) {
+              // Define your restaurant hours here
+              const openingHours = {
+                1: { start: 11, end: 21 }, // Monday
+                2: { start: 0, end: 21 }, // Tuesday
+                3: { start: 11, end: 21 }, // Wednesday
+                4: { start: 11, end: 21 }, // Thursday
+                5: { start: 11, end: 21 }, // Friday
+                6: { start: 11, end: 21 }, // Saturday
+                0: { start: 11, end: 21 }, // Sunday
+              };
+      
+              if (openingHours[dayOfWeek]) {
+                return (
+                  currentHour >= openingHours[dayOfWeek].start &&
+                  currentHour < openingHours[dayOfWeek].end
+                );
+              }
+      
+              return false;
+            }
+      
+            function getDayId(dayOfWeek) {
+              // Map day of week to corresponding ID
+              const dayIdMap = {
+                0: "sunday",
+                1: "monday",
+                2: "tuesday",
+                3: "wednesday",
+                4: "thursday",
+                5: "friday",
+                6: "saturday",
+              };
+      
+              return dayIdMap[dayOfWeek];
+            }
+          </script>
+        <div class="google-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d156577.66189262114!2d-78.04023025127522!3d43.17956969252285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b187e45f096d%3A0x75ff7358fad01690!2sShawarma%20Restaurant!5e0!3m2!1sen!2sus!4v1705077984854!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="restaurant-hours" id="restaurantHours">
+                <h2>Today's Hours:</h2>
+                <ul id="hoursList">
+                  <p id="statusMessage"></p>
+                  <li id="monday"><strong>Monday:</strong>					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11am - 9pm</li>
+                  <li id="tuesday"><strong>Tuesday:</strong> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11am - 9pm</li>
+                  <li id="wednesday"><strong>Wednesday:</strong>	&nbsp; 11am - 9pm</li>
+                  <li id="thursday"><strong>Thursday:</strong> 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11am - 9pm</li>
+                  <li id="friday"><strong>Friday:</strong> 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11am - 9pm</li>
+                  <li id="saturday"><strong>Saturday:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11am - 9pm</li>
+                  <li id="sunday"><strong>Sunday:</strong> 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11am - 9pm</li>
+                </ul>
+              </div>
+       </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+          <div class="restaurant-info">
+              <h3>Shawarma Restaurant</h3>
+              <p>3670 Mt Read Blvd, Rochester, NY 14616</p>
+              <p>Phone: (585) 270-4772</p>
+      
+          </div>
+          <div class="social-icons">
+              <a href="https://www.doordash.com/store/shawarma-restaurant-rochester-26219940/"><img class="doordash" src="./images/R.png"></a>
+              <a href="https://www.grubhub.com/restaurant/shawarma-restaurant-3670-mt-read-blvd-rochester/7134016"><img class="doordash" src="./images/grubhub.png"></a>
+              <a href="https://www.yelp.com/biz/shawarma-restaurant-no-title"><img class="doordash" src="./images/y.png"></a>
+          </div>
+      </div>
+  </footer>
+    <script src="location.js"></script>
+</body>
+</html>
